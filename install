@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+
+if [ -x "$ROOT_DIR/.venv/bin/python" ]; then
+	exec "$ROOT_DIR/.venv/bin/python" -m pip install -r "$ROOT_DIR/requirements.txt"
+fi
+
+exec python3 -m pip install -r "$ROOT_DIR/requirements.txt"
